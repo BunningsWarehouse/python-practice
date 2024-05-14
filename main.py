@@ -1,6 +1,14 @@
+# Imports random
+import random
+# set constants
 QUESTION_FORMAT = "{}\n A. {} \n B. {} \n C. {} \n D. {} \n"
-# Create score variable
-score = 0
+GOOD_COMMENTS = ["Congratulations, you are doing well", "You are very smart!!1!!!!!11!!!", "You know python fairly well"]
+BAD_COMMENTS = ["Please quit your coding career oml you are so bad", "you always fail to make me proud", "python is such an easy coding language how are you this bad"]
+QUESTIONS = ["What year was python made? \n", 
+             "Who was the Creator of Python?"]
+OPTIONS = [["1991", "1992", "1993", "2035"], ["Kendrick Lamar", "Bjarne Stroustrup", "Guido van Rossum", "James Gosling"]]
+SHORT_OPTIONS = ["a", "b", "c", "d"]
+ANSWERS = [0,2]
 # Create play variable
 play = "yes"
 # Ask user for name
@@ -23,79 +31,31 @@ while True:
 
 # start game loop
 while play == "yes":
-    question_tries = tries
-    while question_tries > 0:
-        # Ask user A question
-        answer = input("What is the function that outputs text in python? \n").lower()
-
-
-        # Tell user the answer
-        if answer == "print".lower():
-            print("you said", answer)
-            print("you are correct")
-            score += 10
-            break
-        elif answer == "":
-            print("you said nothing so you automatically lose")
-        else:
-            print("you said", answer)
-            print("How did you get that wrong that's like the first thing you learn with python")
-            question_tries -= 1
-    print("the answer is print")    
-    # Ask user A question
-    question_tries = tries
-    while question_tries > 0:
-        answer = input("What is the function that allows you to input text in python? \n").lower()
-
-
-        # Tell user the answer
-
-        if answer == "input".lower():
-            print("you said", answer)
-            print("you are correct")
-            break
-            score += 10
-        elif answer == "":
-            print("you said nothing so you automatically lose")
-        else:
-            print("you said", answer)
-            print("It was literally in the question how did you not get this question")
-            question_tries -= 1
-    print("the answer is print")    
-
-    question_tries = tries
-    while question_tries > 0:
-        # Ask user A question
-        question =  "What year was python made?"
-        a = "1991"
-        b = "1992"
-        c = "1993"
-        d = "2035"
-        answer = input(QUESTION_FORMAT.format(question, a, b, c, d)).lower()
-
-
-        # Tell user the answer
-
-        if answer == a or answer == "A".lower():
-            print("you said", answer)
-            print("you are correct")
-            score += 10
-            break
-        elif answer == "":
-            print("you said nothing so you automatically lose")
-            
-        elif answer == d or answer == "D".lower():
-            print("you said", answer)
-            print("according to you python was made 12 years into the future from now")
-            question_tries -= 1
-        elif answer == c or answer == "C".lower() or answer == b or answer == "B".lower():
-            print("you said", answer)
-            print("you are incorrect")
-            question_tries -=1
-        else:
-            print("that wasn't an option so you automatically lose")
-    print("the answer is 1991")
-    # End the quiz
+    # Create score variable
+    for i in range(len(QUESTIONS)):
+            score = 0
+            question_tries = tries
+            while question_tries > 0:
+                # Ask user A question
+                answer = input(QUESTION_FORMAT.format(QUESTIONS[i], OPTIONS[i][0],
+                                              OPTIONS[i][1], OPTIONS[i][2], OPTIONS[i][3])).lower()
+                if answer == OPTIONS[i][ANSWERS[i]] or answer == SHORT_OPTIONS[ANSWERS[i]]:
+                    print("you said", answer)
+                    print("you are correct")
+                    print(random.choice(GOOD_COMMENTS))
+                    score += 10
+                    break
+                elif answer == "":
+                    print("you said nothing so you automatically lose")
+                elif answer in SHORT_OPTIONS or answer in OPTIONS[i]:
+                    print("you said", answer)
+                    print("you are incorrect")
+                    print(random.choice(BAD_COMMENTS))
+                    question_tries -=1
+                else:
+                    print("that wasn't an option so you automatically lose")
+                print("the answer is", OPTIONS[i][ANSWERS[i]])
+# End the quiz
     print("this is the end of the quiz you win i guess")
     print("{}, your score is {}".format(name, score))
     if score < 10:
@@ -103,7 +63,5 @@ while play == "yes":
     elif score == 10:
         print("at least you got one question right")
     elif score == 20:
-        print("eh you're alright at python")
-    else:
         print("you are good at python")
     play = input("Do you want to try again? \n").lower()
