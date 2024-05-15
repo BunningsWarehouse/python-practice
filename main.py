@@ -1,6 +1,6 @@
 # Imports random
 import random
-# set constants
+# set 
 QUESTION_FORMAT = "{}\n A. {} \n B. {} \n C. {} \n D. {} \n"
 GOOD_COMMENTS = ["Congratulations, you are doing well", "You are very smart!!1!!!!!11!!!", "You know python fairly well"]
 BAD_COMMENTS = ["Please quit your coding career oml you are so bad", "you always fail to make me proud", "python is such an easy coding language how are you this bad"]
