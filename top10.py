@@ -42,11 +42,11 @@ while lives > 0:
         if inList(answer, guesses):
             print("You have already guessed that answer for the most obscure countries in this wonderful and marvelous quiz named top10.py")
         else:
-            score =+ 10
+            score += 10
             guesses.append(answer)
             print("that is one of the correct answers for the question about the most obscure countries within the wonderful and marvelous quiz named top10.py")       
     else:
-        lives =- 1
+        lives -= 1
         print("Oh great heavens you have inputted an incorrect answer for the question about the most obscure countries within the wonderful and marvelous quiz named top10.py")
 print("You have ran out of the amount of lives you wanted yourself to be given in the wonderful and marvelous quiz named top10.py, your final score is {}".format(score))        
 

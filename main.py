@@ -54,7 +54,7 @@ while play == "yes":
                     question_tries -=1
                 else:
                     print("that wasn't an option so you automatically lose")
-                print("the answer is", OPTIONS[i][ANSWERS[i]])
+            print("the answer is", OPTIONS[i][ANSWERS[i]])
 # End the quiz
     print("this is the end of the quiz you win i guess")
     print("{}, your score is {}".format(name, score))
